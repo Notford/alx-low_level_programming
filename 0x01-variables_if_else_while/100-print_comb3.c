@@ -1,25 +1,33 @@
- #include <stdio.h>
+#include <stdio.h>
+
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * main - program that prints all possible different combinations of two digits
+ * Numbers must be separated by ,followed by a space
+ * The two digits must be different
+ * 01 and 10 are considered the same combination of the two digits 0 and 1
+ * Return: 0
  */
+
 int main(void)
 {
-int nums;
-int nums1;
-
-for (nums = '0'; nums <= '9'; nums++)
+int n1 = 48;
+int n2;
+int com = 44;
+while (n1 <= 57)
 {
-for (nums1 = '0'; nums1 <= '9'; nums1++)
+n2 = n1 + 1;
+while (n2 <= 57)
 {
-putchar(nums);
-putchar(nums1);
-if (nums == '9' && nums1 == '9')
-continue;
-putchar(',');
-putchar(' ');
+putchar(n1);
+putchar(n2);
+if (n1 != 56 || n2 != 57)
+{
+putchar(com);
+putchar(32);
 }
+n2 += 1;
+}
+n1 += 1;
 }
 putchar('\n');
 return (0);
