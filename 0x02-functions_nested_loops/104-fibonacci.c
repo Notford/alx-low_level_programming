@@ -3,11 +3,10 @@
 /**
  * main - Prints the first 98 Fibonacci numbers, starting with
  * 1 and 2, separated by a comma followed by a space.
- *@return : 0
+ * return : 0 if program completes successfully
  */
 
 int main(void)
-
 {
 	int count;
 	unsigned long fib1 = 0, fib2 = 1, sum;
