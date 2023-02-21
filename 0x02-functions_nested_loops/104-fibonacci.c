@@ -3,7 +3,7 @@
 /**
  * main - Prints the first 98 Fibonacci numbers, starting with
  * 1 and 2, separated by a comma followed by a space.
- *@return : Always 0
+ *@return : 0
  */
 
 int main(void)
@@ -43,5 +43,5 @@ int main(void)
 	fib2_half2 = half2;
 	}
 	printf("\n");
-	return 0;
+	return (0);
 }
