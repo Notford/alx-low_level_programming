@@ -1,9 +1,7 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <string.h>
-#define PASSWORD_LENGTH 12
+
 /**
  * main - entry point for the program
  *
@@ -15,20 +13,25 @@
 
 int main(void)
 {
-	char password[PASSWORD_LENGTH + 1];
-	const char *charset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	const size_t charset_len = strlen(charset);
+	int pass[100];
+	int i, sum, n;
 
+	sum = 0;
 	srand(time(NULL));
 
-	for (size_t i = 0; i < PASSWORD_LENGTH; i++)
+	for (i = 0; i < 100; i++)
 	{
-	password[i] = charset[rand() % charset_len];
+		pass[i] = rand() % 78;
+		sum += (pass[i] + '0');
+		putchar(pass[i] + '0');
+		if ((2772 - sum) - '0' < 78)
+		{
+			n = 2772 - sum - '0';
+			sum += n;
+			putchar(n + '0');
+			break;
+		}
 	}
-
-	password[PASSWORD_LENGTH] = '\0';
-
-	printf("Generated password: %s\n", password);
 
 	return (0);
 }
