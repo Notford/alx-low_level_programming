@@ -10,8 +10,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r);
  * @r: the buffer to store the results.
  * @r_index: the current index of the buffer.
  *
- * return: if r can store the sum = a pointer to the result.
- * 	   if r cannot store the sum - 0.
+ * return: a pointer to the result.
+ *
  */
 
 char *add_strings(char *n1, char *n2, char *r, int r_index)
@@ -48,23 +48,23 @@ char *add_strings(char *n1, char *n2, char *r, int r_index)
 
 	else if (tens && r_index < 0)
 		return (0);
-	
+
 	return (r + r_index + 1);
 }
 
 /**
- * infinite_add -  adds two numbers
+ * infinite_add - adds two numbers
  * @n1: the first number to be added
  * @n2: the second number to be added
  * @r: the buffer to store the result
  * @size_r: the buffer size
  *
  * return: if r can store the sum - a pointer to the result
- * 	   if r cannot store the sum - 0.
+ * if r cannot store the sum - 0.
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int index, n1_len = 0, n2_len = 0; 
+	int index, n1_len = 0, n2_len = 0;
 
 	for (index = 0; *(n1 + index); index++)
 		n1_len++;
