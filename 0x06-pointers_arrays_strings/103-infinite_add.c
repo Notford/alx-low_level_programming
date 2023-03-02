@@ -59,8 +59,8 @@ char *add_strings(char *n1, char *n2, char *r, int r_index)
  * @r: the buffer to store the result
  * @size_r: the buffer size
  *
- * return: if r can store the sum - a pointer to the result
- * if r cannot store the sum - 0.
+ * return: pointer to the result
+ * 
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
