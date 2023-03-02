@@ -1,44 +1,40 @@
 #include <stdio.h>
 #include <string.h>
 
-char *infinite_add(char *n1, char *n2, char *r, int size_r)
+char *add_strings(char *n1, char *n2, char *r, int r_index)
 {
-	int len1 = strlen(n1);
-	int len2 = strlen(n2);
-	int max_len = len1 > len2 ? len1 : len2;
-	int carry = 0;
-	int i, sum;
+	int num, tens = 0;
 
-	if (max_len + 1 > size_r)
+	for (; *n1 && *n2; n1--, n2--, r_index--)
 	{
-	return 0;
-	}
-
-	r[max_len + 1] = '\0';
-
-	for (i = 0; i < max_len; i++)
-	{
-	sum = carry;
-	if (i < len1)
-	{
-		sum += n1[len1 - i - 1] - '0';
-	}
-	if (i < len2)
-	{
-		sum += n2[len2 - i - 1] - '0';
-	}
-	r[max_len - i] = sum % 10 + '0';
-	carry = sum / 10;
+		num = (*n1 - '0') + (*n2 - '0');
+		num += tens;
+		*(r + r_index) = (num % 10) + '0';
+		tens = num / 10;
 	}
 
-	if (carry)
+	for (; *n1; n1--, r_index--)
 	{
-		r[0] = carry + '0';
-		return r;
+		num = (*n1 - '0') + tens;
+		*(r + r_index) = (num % 10) + '0';
+		tens = num / 10;
 	}
-	else
-	{
 
-	return r + 1;
+	for (; *n2; n2--, r_index--)
+	{
+		num = (*n2 - '0') + tens;
+		*(r + r_index) = (num % 10) + '0';
+		tens = num / 10;
 	}
+
+	if (tens && r_index >= 0)
+	{
+		*(r + r_index) = (tens % 10) + '0';
+		return (r + r_index);
+	}
+
+	else if (tens && r_index < 0)
+		return (0);
+	
+	return (r + r_index + 1);
 }
