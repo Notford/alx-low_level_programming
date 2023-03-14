@@ -1,40 +1,38 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * argstostr - concatenate all arguments into a new string
- * @ac: the argument count
- * @av: the argument vector
- *
- * Return: NULL memory allocation fails, ac is 0 or av is NULL,
- * otherwise return a pointer to the new string
+ * argstostr - check the code for ALX School students.
+ * @ac: integer
+ * @av: character
+ * Return: Null or string.
  */
 char *argstostr(int ac, char **av)
 {
-	char *cat, *chr;
-	int arg, size;
+	int i, j, l, buffL;
+	char *p;
 
-	if (!ac || !av)
-		return (NULL);
-
-	for (arg = 0, size = 1; arg < ac; ++arg, ++size)
+	if (ac == 0 || av == NULL)
 	{
-		for (chr = av[arg]; *chr; ++chr, ++size)
-			;
-	}
-
-	cat = (char *) malloc(sizeof(char) * size);
-
-	if (!cat)
 		return (NULL);
-
-	for (arg = 0, size = 0; arg < ac; ++arg, ++size)
-	{
-		for (chr = av[arg]; *chr; ++chr, ++size)
-			cat[size] = *chr;
-		cat[size] = '\n';
 	}
+	i = j = l  = buffL = 0;
 
-	cat[size] = '\0';
-
-	return (cat);
+	for (i = 0; av[i]; i++)
+	{
+		for (j = 0; av[i][j]; j++)
+			l++;
+	}
+	p = (char *) malloc(l * sizeof(char) + ac + 1);
+	if (p == NULL)
+		return (NULL);
+	for (i = 0; av[i]; i++)
+	{
+		for (j = 0; av[i][j]; j++, buffL++)
+			p[buffL] = av[i][j];
+		p[buffL] = '\n';
+		buffL++;
+	}
+	p[buffL] = '\0';
+	return (p);
 }
